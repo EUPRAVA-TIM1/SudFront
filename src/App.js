@@ -5,6 +5,7 @@ import NavLayout from "./Components/NavLayout.tsx";
 import HomePage from "./Pages/HomePage.tsx";
 import CourtsPage from "./Pages/CourtsPage.tsx";
 import JudgeMainPage from "./Pages/JudgeMainPage.tsx";
+import JudgesPage from "./Pages/JudgesPage.tsx";
 
 function App() {
   return (
@@ -19,12 +20,12 @@ function App() {
           element={<NavLayout body={<HomePage></HomePage>} />}
         ></Route>
         <Route
-          path="/Courts"
+          path="/Sud"
           element={<NavLayout body={<CourtsPage></CourtsPage>} />}
         ></Route>
         <Route
-          path="/Judge"
-          element={<NavLayout body={<JudgeMainPage></JudgeMainPage>} />}
+          path="/sudija"
+          element={<NavLayout body={<JudgesPage></JudgesPage>} />}
         ></Route>
       </Routes>
     </BrowserRouter>
