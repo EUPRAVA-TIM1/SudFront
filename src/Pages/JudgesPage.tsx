@@ -1,65 +1,29 @@
 import React, { useEffect, useState } from "react";
 import { Button, Form, Table } from "react-bootstrap";
-import { Sudija } from "../Data/interfaces";
+import { getAllJudges } from "../Services/JudgeService.ts";
+import { Sudija, Sud } from "../Data/interfaces.ts";
+import { getAllCourts } from "../Services/CourtService.ts";
 
 function JudgesPage() {
   const [courtId, setCourtId] = useState("");
   const [judgeName, setJudgeName] = useState("");
   const [judgeLastName, setJudgeLastName] = useState("");
   var [filteredJudges, setFilteredJudges] = useState<Sudija[]>([]);
-  const [judges, setJudges] = useState<Sudija[]>([
-    {
-      Adresa: "Prvi Sudija",
-      Broj: "1323123",
-      Ime: "Marko",
-      Jmbg: "1",
-      Mail: "marko@gmail.com",
-      OpstinaId: "12312",
-      Opstina: { OpstinaId: "123", Naziv: "Novi Sad", PTT: 2100 },
-      Prezime: "Markovic",
-      SudId: "123",
-      Sud: {
-        SudId: "123",
-        Naziv: "Prvi Sud",
-        Opstina: { OpstinaId: "123", Naziv: "Novi Sad", PTT: 2100 },
-        OpstinaId: "123",
-      },
-    },
-    {
-      Adresa: "Drugi Sudija",
-      Broj: "1323123",
-      Ime: "Petar",
-      Jmbg: "2",
-      Mail: "marko@gmail.com",
-      OpstinaId: "12312",
-      Opstina: { OpstinaId: "123", Naziv: "Novi Sad", PTT: 2100 },
-      Prezime: "Petrovic",
-      SudId: "123",
-      Sud: {
-        SudId: "123",
-        Naziv: "Prvi Sud",
-        Opstina: { OpstinaId: "123", Naziv: "Novi Sad", PTT: 2100 },
-        OpstinaId: "123",
-      },
-    },
-    {
-      Adresa: "Treci Sudija",
-      Broj: "1323123",
-      Ime: "Milos",
-      Jmbg: "3",
-      Mail: "marko@gmail.com",
-      OpstinaId: "12312",
-      Opstina: { OpstinaId: "234", Naziv: "Novi Sad", PTT: 2100 },
-      Prezime: "Milosevic",
-      SudId: "234",
-      Sud: {
-        SudId: "123",
-        Naziv: "Drugi Sud",
-        Opstina: { OpstinaId: "234", Naziv: "Novi Sad", PTT: 2100 },
-        OpstinaId: "123",
-      },
-    },
-  ]);
+  const [judges, setJudges] = useState<Sudija[]>([]);
+  const [courts, setCourts] = useState<Sud[]>([]);
+
+  useEffect(() => {
+    getAllJudges()
+      .then((res) => {
+        setJudges(res);
+      })
+      .catch((err) => console.log(err));
+    getAllCourts()
+      .then((res) => {
+        setCourts(res);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   useEffect(() => {
     filterJudges();
@@ -73,18 +37,18 @@ function JudgesPage() {
 
     if (judgeName !== "") {
       setFilteredJudges(
-        judges.filter((judge) => judge.Ime.includes(judgeName))
+        judges.filter((judge) => judge.ime.includes(judgeName))
       );
     }
 
-    if (judgeName !== "" && judgeLastName != "") {
+    if (judgeName !== "" && judgeLastName !== "") {
       setFilteredJudges(
-        filteredJudges.filter((judge) => judge.Prezime.includes(judgeLastName))
+        filteredJudges.filter((judge) => judge.prezime.includes(judgeLastName))
       );
     } else if (judgeName === "" && judgeLastName !== "") {
       console.log("izmena");
       setFilteredJudges(
-        judges.filter((judge) => judge.Prezime.includes(judgeLastName))
+        judges.filter((judge) => judge.prezime.includes(judgeLastName))
       );
     }
 
@@ -92,15 +56,16 @@ function JudgesPage() {
       if (judgeName !== "" || judgeLastName !== "") {
         console.log("calles");
         setFilteredJudges(
-          filteredJudges.filter((judge) => judge.SudId.match(courtId))
+          filteredJudges.filter((judge) => judge.sudId.match(courtId))
         );
       } else {
-        setFilteredJudges(judges.filter((judge) => judge.SudId.match(courtId)));
+        setFilteredJudges(judges.filter((judge) => judge.sudId.match(courtId)));
       }
     }
   }
 
   const handleJudgesChange = (e) => {
+    console.log("ID:", e.target.value);
     setCourtId(e.target.value);
   };
 
@@ -136,10 +101,11 @@ function JudgesPage() {
         Izaberi sud:
         <Form.Select value={courtId} onChange={handleJudgesChange}>
           <option value="">All</option>
-          <option value="123">Prvi Sud</option>
-          <option value="234">Drugi Sud</option>
-          <option value="345">Treci Sud</option>
-          {/* Add options for available Opstina names */}
+          {courts.map((court) => (
+            <option key={court.sudId} value={court.sudId}>
+              {court.naziv}
+            </option>
+          ))}
         </Form.Select>
       </label>
       <Table striped>
@@ -147,21 +113,22 @@ function JudgesPage() {
           <tr>
             <th>Naziv</th>
             <th>Opstina</th>
+            <th>Mail</th>
           </tr>
         </thead>
         <tbody>
           {judgeName === "" && judgeLastName === "" && courtId === ""
             ? judges.map((judge) => {
                 return (
-                  <tr key={judge.Jmbg}>
-                    <td>{judge.Ime}</td>
-                    <td>{judge.Prezime}</td>
-                    <td>{judge.Mail}</td>
-                    <td>{judge.Sud?.Naziv}</td>
+                  <tr key={judge.jmbg}>
+                    <td>{judge.ime}</td>
+                    <td>{judge.prezime}</td>
+                    <td>{judge.mail}</td>
+                    <td>{judge.sud?.naziv}</td>
                     <td>
                       <Button
                         variant="outline-success"
-                        onClick={() => showJudge(judge.Jmbg)}
+                        onClick={() => showJudge(judge.jmbg)}
                       >
                         Show
                       </Button>
@@ -171,15 +138,15 @@ function JudgesPage() {
               })
             : filteredJudges.map((judge) => {
                 return (
-                  <tr key={judge.Jmbg}>
-                    <td>{judge.Ime}</td>
-                    <td>{judge.Prezime}</td>
-                    <td>{judge.Mail}</td>
-                    <td>{judge.Sud?.Naziv}</td>
+                  <tr key={judge.jmbg}>
+                    <td>{judge.ime}</td>
+                    <td>{judge.prezime}</td>
+                    <td>{judge.mail}</td>
+                    <td>{judge.sud?.naziv}</td>
                     <td>
                       <Button
                         variant="outline-success"
-                        onClick={() => showJudge(judge.Jmbg)}
+                        onClick={() => showJudge(judge.jmbg)}
                       >
                         Show
                       </Button>

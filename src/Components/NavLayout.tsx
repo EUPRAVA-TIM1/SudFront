@@ -1,11 +1,32 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { base_url, storageKey } from "../Data/data.ts";
 import logo from "../Images/Grb.png";
+import axios from "axios";
+import {
+  backend_url,
+  courtStorageKey,
+  base_url,
+  storageKey,
+} from "../Data/data.ts";
 
 function NavLayout({ body }) {
   const location = useLocation();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    var courtJwt = localStorage.getItem(courtStorageKey);
+    if (courtJwt === null) {
+      axios
+        .get(backend_url + "authorise/" + localStorage.getItem(storageKey))
+        .then((res) => {
+          console.log("JWT:", res.data);
+          localStorage.setItem(courtStorageKey, res.data);
+        })
+        .catch((err) => {
+          navigate("/Home");
+        });
+    }
+  }, [location]);
 
   const home = () => {
     navigate("/Home");
@@ -13,6 +34,7 @@ function NavLayout({ body }) {
 
   const logOut = () => {
     localStorage.removeItem(storageKey);
+    localStorage.removeItem(courtStorageKey);
     window.location.replace(base_url);
   };
 

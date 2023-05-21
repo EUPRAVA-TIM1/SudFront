@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import ComponentCard from "../Components/ComponentCard.tsx";
+import { backend_url } from "../Data/data.ts";
 import { allComponents, judgeComponents } from "../Data/data.ts";
 
 function HomePage() {

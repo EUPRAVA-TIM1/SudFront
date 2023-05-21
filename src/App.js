@@ -6,6 +6,7 @@ import HomePage from "./Pages/HomePage.tsx";
 import CourtsPage from "./Pages/CourtsPage.tsx";
 import JudgeMainPage from "./Pages/JudgeMainPage.tsx";
 import JudgesPage from "./Pages/JudgesPage.tsx";
+import AuthorisePage from "./Pages/AuthorisePage.tsx";
 
 function App() {
   return (
@@ -18,6 +19,12 @@ function App() {
         <Route
           path="/Home"
           element={<NavLayout body={<HomePage></HomePage>} />}
+        ></Route>
+        <Route
+          path="/redirekcija/:jwt"
+          element={
+            <NavLayout body={<AuthorisePage></AuthorisePage>}></NavLayout>
+          }
         ></Route>
         <Route
           path="/Sud"
