@@ -26,7 +26,7 @@ export const judgeComponents: Component[] = [
   {
     title: "Pregled sudskih predmeta",
     desc: "Pregled svih sudskih predmeta",
-    url: "/predmet/sudija/",
+    url: "/predmet/sudija",
   },
 ];
 

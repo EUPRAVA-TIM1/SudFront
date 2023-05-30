@@ -13,6 +13,8 @@ import ReportsPage from "./Pages/ReportsPage.tsx";
 import ReportPage from "./Pages/ReportPage.tsx";
 import CaseCreatePage from "./Pages/CaseCreatePage.tsx";
 import CasePage from "./Pages/CasePage.tsx";
+import CasesPage from "./Pages/CasesPage.tsx";
+import HearingCreatePage from "./Pages/HearingCreatePage.tsx";
 
 function App() {
   return (
@@ -57,12 +59,20 @@ function App() {
           element={<NavLayout body={<ReportPage></ReportPage>} />}
         ></Route>
         <Route
+          path="/predmet/sudija"
+          element={<NavLayout body={<CasesPage></CasesPage>} />}
+        ></Route>
+        <Route
           path="/predmet/create/:reportId"
           element={<NavLayout body={<CaseCreatePage></CaseCreatePage>} />}
         ></Route>
         <Route
           path="/predmet/:predmetId"
           element={<NavLayout body={<CasePage></CasePage>} />}
+        ></Route>
+        <Route
+          path="/rociste/create/:caseId"
+          element={<NavLayout body={<HearingCreatePage></HearingCreatePage>} />}
         ></Route>
       </Routes>
     </BrowserRouter>
