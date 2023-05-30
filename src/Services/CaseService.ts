@@ -1,11 +1,11 @@
 import axios from "axios";
 import { backend_url, courtStorageKey } from "../Data/data.ts";
 
-const url = backend_url + "sudija";
+const url = backend_url + "predmet";
 
-export function getAllJudges() {
+export function getCaseByReport(reportId: string) {
   return axios
-    .get(url, {
+    .get(url + "/prijava/" + reportId, {
       headers: {
         Authorization: "Bearer " + localStorage.getItem(courtStorageKey),
       },
@@ -18,9 +18,24 @@ export function getAllJudges() {
     });
 }
 
-export function getJudgeByJmbg(sudijaJmbg: string) {
+export function getCaseById(caseId: string) {
   return axios
-    .get(url + "/" + sudijaJmbg, {
+    .get(url + "/" + caseId, {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem(courtStorageKey),
+      },
+    })
+    .then((res) => {
+      return res.data;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+export function postCase(dto) {
+  return axios
+    .post(url, dto, {
       headers: {
         Authorization: "Bearer " + localStorage.getItem(courtStorageKey),
       },

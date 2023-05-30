@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Button, Form, Table } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import { getAllJudges } from "../Services/JudgeService.ts";
 import { Sudija, Sud } from "../Data/interfaces.ts";
 import { getAllCourts } from "../Services/CourtService.ts";
@@ -30,10 +31,8 @@ function JudgesPage() {
   }, [judgeName, judgeLastName, courtId]);
 
   function filterJudges() {
-    console.log("judges" + judges);
     var judgess = judges;
     setFilteredJudges(judgess);
-    console.log("filtered" + filteredJudges);
 
     if (judgeName !== "") {
       setFilteredJudges(
@@ -65,7 +64,6 @@ function JudgesPage() {
   }
 
   const handleJudgesChange = (e) => {
-    console.log("ID:", e.target.value);
     setCourtId(e.target.value);
   };
 
@@ -126,12 +124,12 @@ function JudgesPage() {
                     <td>{judge.mail}</td>
                     <td>{judge.sud?.naziv}</td>
                     <td>
-                      <Button
-                        variant="outline-success"
-                        onClick={() => showJudge(judge.jmbg)}
+                      <Link
+                        className="btn btn-outline-success"
+                        to={`/sudija/${judge?.jmbg}`}
                       >
                         Show
-                      </Button>
+                      </Link>
                     </td>
                   </tr>
                 );
@@ -144,12 +142,12 @@ function JudgesPage() {
                     <td>{judge.mail}</td>
                     <td>{judge.sud?.naziv}</td>
                     <td>
-                      <Button
-                        variant="outline-success"
-                        onClick={() => showJudge(judge.jmbg)}
+                      <Link
+                        className="btn btn-outline-success"
+                        to={`/sudija/${judge?.jmbg}`}
                       >
                         Show
-                      </Button>
+                      </Link>
                     </td>
                   </tr>
                 );

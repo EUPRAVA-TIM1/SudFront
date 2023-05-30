@@ -3,6 +3,8 @@ import { Component } from "./interfaces";
 export const base_url = "http://localhost:3000";
 export const storageKey = "jwt";
 export const courtStorageKey = "court-jwt";
+export const isSudija = "is-sudija";
+export const userJmbg = "jmbg";
 export const backend_url = "http://localhost:8003/api/";
 
 export const judgeComponents: Component[] = [
@@ -19,7 +21,7 @@ export const judgeComponents: Component[] = [
   {
     title: "Pregled prekrsajnih prijava",
     desc: "Pregled svih dodeljenih prekrsajnih prijava",
-    url: "/prekrsajnaprijava/sudija/",
+    url: "/prekrsajnaprijava/sudija",
   },
   {
     title: "Pregled sudskih predmeta",

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { Table, Button, Form } from "react-bootstrap";
 import { Opstina, Sud } from "../Data/interfaces.ts";
 import { getAllCourts } from "../Services/CourtService.ts";
@@ -71,12 +72,12 @@ function CourtsPage() {
                     <td>{court.naziv}</td>
                     <td>{court.opstina.naziv}</td>
                     <td>
-                      <Button
-                        variant="outline-success"
-                        onClick={() => showCourt(court.sudId)}
+                      <Link
+                        className="btn btn-outline-success"
+                        to={`/sud/${court.sudId}`}
                       >
                         Show
-                      </Button>
+                      </Link>
                     </td>
                   </tr>
                 );
@@ -87,12 +88,9 @@ function CourtsPage() {
                     <td>{court.naziv}</td>
                     <td>{court.opstina.naziv}</td>
                     <td>
-                      <Button
-                        variant="outline-success"
-                        onClick={() => showCourt(court.sudId)}
-                      >
+                      <Link className="outline-success" to={`/${court.sudId}`}>
                         Show
-                      </Button>
+                      </Link>
                     </td>
                   </tr>
                 );

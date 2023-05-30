@@ -107,31 +107,31 @@ export interface Rociste {
 }
 
 export const IshodRocista = {
-  ZAKAZANO: 0,
-  ODLOZENO: 1,
-  ZAVRSENO: 2,
-  ARHIVA: 3,
+  0: "ZAKAZANO",
+  1: "ODLOZENO",
+  2: "ZAVRSENO",
+  3: "ARHIVA",
 };
 
-export const opisiKrivica = {
-  POJAS: 0,
-  PREKORACENJE_BRZINE: 1,
-  PIJANA_VOZNJA: 2,
-  TEHNICKA_NEISPRAVNOST: 3,
-  PRVA_POMOC: 4,
-  NEMA_VOZACKU: 5,
-  REGISTRACIJA: 6,
+export const OpisiKrivica = {
+  0: "PREKORACENJE_BRZINE",
+  1: "VOZNJA_POD_DEJSTVOM_ALKOHOLA",
+  2: "POJAS",
+  3: "TEHNICKA_NEISPRAVNOST_VOZILA",
+  4: "PRVA_POMOC",
+  5: "VOZNJA_BEZ_VOZACKE_DOZVOLE",
+  6: "VOZNJA_NEREGISTROVANOG_VOZILA",
 };
 
 export const StatusPredmeta = {
-  OTVOREN: 0,
-  ZATVOREN: 1,
-  ARHIVA: 2,
+  0: "OTVOREN",
+  1: "ZATVOREN",
+  2: "ARHIVA",
 };
 
 export const StatusPrekrsajnePrijave = {
-  AKTIVAN: 0,
-  PRIHVACEN: 1,
-  ODBIJEN: 2,
-  ARHIVA: 3,
+  0: "AKTIVAN",
+  1: "PRIHVACEN",
+  2: "ODBIJEN",
+  3: "ARHIVA",
 };

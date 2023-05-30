@@ -2,12 +2,16 @@ import React, { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import logo from "../Images/Grb.png";
 import axios from "axios";
+import jwt from "jwt-decode";
 import {
   backend_url,
   courtStorageKey,
   base_url,
   storageKey,
+  isSudija,
+  userJmbg,
 } from "../Data/data.ts";
+import jwtDecode from "jwt-decode";
 
 function NavLayout({ body }) {
   const location = useLocation();
@@ -19,8 +23,10 @@ function NavLayout({ body }) {
       axios
         .get(backend_url + "authorise/" + localStorage.getItem(storageKey))
         .then((res) => {
-          console.log("JWT:", res.data);
           localStorage.setItem(courtStorageKey, res.data);
+          var jwt = jwtDecode(res.data);
+          localStorage.setItem(isSudija, jwt.isSudija);
+          localStorage.setItem(userJmbg, jwt.Jmbg);
         })
         .catch((err) => {
           navigate("/Home");
