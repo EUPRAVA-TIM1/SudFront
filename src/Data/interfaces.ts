@@ -47,7 +47,7 @@ export interface OdlukaSudije {
   Resenje: string;
   Sudija: Sudija | null;
   SudijaJmbg: string | null;
-  OptuzeniJmbg: string | null;
+  jmbgOptuzenog: string | null;
   AdvokatJmbg: string | null;
   Rociste: Rociste | null;
   RocisteId: string;
@@ -70,7 +70,7 @@ export interface Predmet {
   Opis: string;
   Sudija: Sudija | null;
   SudijaJmbg: string | null;
-  OptuzeniJmbg: string | null;
+  jmbgOptuzenog: string | null;
   Advokat: Gradjanin | null;
   AdvokatJmbg: string | null;
   Status: number;
@@ -82,8 +82,9 @@ export interface PrekrsajnaPrijava {
   PrekrsajnaPrijavaId: string;
   Datum: string;
   Komentar: string;
-  OptuzeniJmbg: string;
-  PrijavljenoOdJmbg?: string;
+  Id: number;
+  jmbgOptuzenog: string;
+  jmbgSluzbenika?: string;
   Sudija: Sudija | null;
   SudijaJmbg: string | null;
   Opstina: Opstina | null;
@@ -96,7 +97,7 @@ export interface PrekrsajnaPrijava {
 export interface Rociste {
   RocisteId: string;
   DatumRocista: string;
-  OptuzeniJmbg: string;
+  jmbgOptuzenog: string;
   AdvokatJmbg?: string;
   Predmet?: Predmet;
   PredmetId: string;

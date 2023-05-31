@@ -8,7 +8,6 @@ import {
   IshodRocista,
 } from "../Data/interfaces.ts";
 import { getCaseById } from "../Services/CaseService.ts";
-import { Button, ListGroup } from "react-bootstrap";
 import { getHearingsByCase } from "../Services/HearingService.ts";
 
 const CasePage = () => {

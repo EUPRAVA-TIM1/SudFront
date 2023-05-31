@@ -47,12 +47,12 @@ function CaseCreatePage() {
       <ul className="list-group list-group-flush fs-4">
         <li className="list-group-item">
           <strong>Datum:</strong> {reportDate} <br></br>
-          <strong>Optuzeni:</strong> {report?.optuzeniJmbg}
+          <strong>Optuzeni:</strong> {report?.jmbgOptuzenog}
           <br></br>
           <strong>Prekrsaj:</strong> {OpisiKrivica[report?.prekrsaj]}
         </li>
         <li className="list-group-item">
-          <strong>Izdato od:</strong> {report?.prijavljenoOdJmbg} <br></br>
+          <strong>Izdato od:</strong> {report?.jmbgSluzbenika} <br></br>
           <strong>Komentar:</strong> {report?.komentar}
         </li>
       </ul>

@@ -47,3 +47,66 @@ export function postHearing(dto) {
       console.log(err);
     });
 }
+
+export function putHearing(dto) {
+  return axios
+    .put(url, dto, {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem(courtStorageKey),
+      },
+    })
+    .then((res) => {
+      return res.data;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+export function getHearingsByJudge() {
+  return axios
+    .get(url + "/sudija/" + localStorage.getItem(userJmbg), {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem(courtStorageKey),
+      },
+    })
+    .then((res) => {
+      return res.data;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+export function getHearingsByUser() {
+  return (
+    axios
+      // .get(url + "/gradjanin/" + localStorage.getItem(userJmbg), {
+      .get(url + "/gradjanin/32423234234234", {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem(courtStorageKey),
+        },
+      })
+      .then((res) => {
+        return res.data.$values;
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  );
+}
+
+export function getHearingsByLawyer() {
+  return axios
+    .get(url + "/sudija/" + localStorage.getItem(userJmbg), {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem(courtStorageKey),
+      },
+    })
+    .then((res) => {
+      return res.data;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}

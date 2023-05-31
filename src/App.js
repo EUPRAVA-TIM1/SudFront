@@ -1,10 +1,8 @@
-import logo from "./logo.svg";
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import NavLayout from "./Components/NavLayout.tsx";
 import HomePage from "./Pages/HomePage.tsx";
 import CourtsPage from "./Pages/CourtsPage.tsx";
-import JudgeMainPage from "./Pages/JudgeMainPage.tsx";
 import JudgesPage from "./Pages/JudgesPage.tsx";
 import AuthorisePage from "./Pages/AuthorisePage.tsx";
 import CourtPage from "./Pages/CourtPage.tsx";
@@ -17,6 +15,7 @@ import CasesPage from "./Pages/CasesPage.tsx";
 import HearingCreatePage from "./Pages/HearingCreatePage.tsx";
 import HearingPage from "./Pages/HearingPage.tsx";
 import CourtDecisionCreatePage from "./Pages/CourtDecisionCreatePage.tsx";
+import JudgeHearingsPage from "./Pages/JudgeHearingsPage.tsx";
 
 function App() {
   return (
@@ -75,6 +74,10 @@ function App() {
         <Route
           path="/rociste/create/:caseId"
           element={<NavLayout body={<HearingCreatePage></HearingCreatePage>} />}
+        ></Route>
+        <Route
+          path="/rocista/sudija"
+          element={<NavLayout body={<JudgeHearingsPage></JudgeHearingsPage>} />}
         ></Route>
         <Route
           path="/rociste/:hearingId"

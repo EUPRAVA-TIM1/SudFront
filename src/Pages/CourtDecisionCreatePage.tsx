@@ -4,10 +4,12 @@ import { useParams, useNavigate } from "react-router-dom";
 import { Rociste, OpisiKrivica } from "../Data/interfaces.ts";
 import { getHearingById } from "../Services/HearingService.ts";
 import { postDecision } from "../Services/CourtDecisionService.ts";
+import { updateTrafficUnitData } from "../Services/ExitService.ts";
 
 function CourtDecisionCreatePage() {
   const [hearing, setHearing] = useState<Rociste>();
   const [hearingDate, setHearingDate] = useState();
+  const [idForSend, setIdForSend] = useState();
   const {
     register,
     handleSubmit,
@@ -20,6 +22,7 @@ function CourtDecisionCreatePage() {
     getHearingById(hearingId)
       .then((res) => {
         setHearing(res);
+        setIdForSend(res.predmet.sudija.prekrsajnePrijave.$values[0].id);
         var date = new Date(res.datumRocista);
         setHearingDate(date.toLocaleDateString());
       })
@@ -36,9 +39,20 @@ function CourtDecisionCreatePage() {
       NovcanaKazna: Number(getValues("novcanaKazna")),
     };
 
+    const trafficDto = {
+      Status: null,
+    };
     postDecision(dto)
       .then((res) => {
-        navigate("/predmet/" + res.predmetId);
+        trafficDto.Status = res.status;
+        console.log(trafficDto);
+        console.log(idForSend);
+
+        updateTrafficUnitData(trafficDto, idForSend)
+          .then(() => {
+            navigate("/rociste/" + res.rocisteId);
+          })
+          .catch((err) => console.log(err));
       })
       .catch((err) => console.log(err));
   };
@@ -50,8 +64,6 @@ function CourtDecisionCreatePage() {
         <li className="list-group-item">
           <strong>Sudski predmet:</strong> {hearing?.predmet?.naslov}
           <br></br>
-          <strong>Prekrsaj:</strong>{" "}
-          {OpisiKrivica[hearing?.predmet?.prekrsajnaPrijava?.prekrsaj]}
         </li>
         <li className="list-group-item">
           <strong>Opis predmeta:</strong> {hearing?.predmet?.opis} <br></br>

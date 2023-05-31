@@ -40,7 +40,7 @@ function ReportsPage() {
                 <tr key={report.prekrsajnaPrijavaId}>
                   <td>{formattedDate}</td>
                   <td>{report.komentar}</td>
-                  <td>{report.optuzeniJmbg}</td>
+                  <td>{report.jmbgOptuzenog}</td>
                   <td>{OpisiKrivica[report.prekrsaj]}</td>
                   <td>
                     {StatusPrekrsajnePrijave[report.statusPrekrsajnePrijave]}

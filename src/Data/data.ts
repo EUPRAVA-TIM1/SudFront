@@ -6,6 +6,8 @@ export const courtStorageKey = "court-jwt";
 export const isSudija = "is-sudija";
 export const userJmbg = "jmbg";
 export const backend_url = "http://localhost:8003/api/";
+export const saobracajna_url =
+  "http://localhost:8002/saobracajna/Policajac/Sud/Nalozi/Status/";
 
 export const judgeComponents: Component[] = [
   {
@@ -16,7 +18,7 @@ export const judgeComponents: Component[] = [
   {
     title: "Pregled rocista - sudija",
     desc: "Pregled svih aktivnih rocista",
-    url: "/rociste/sudija/",
+    url: "/rocista/sudija",
   },
   {
     title: "Pregled prekrsajnih prijava",

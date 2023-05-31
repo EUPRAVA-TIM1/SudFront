@@ -1,5 +1,5 @@
 import axios from "axios";
-import { backend_url, courtStorageKey, userJmbg } from "../Data/data.ts";
+import { backend_url, courtStorageKey } from "../Data/data.ts";
 
 const url = backend_url + "odlukasudije";
 

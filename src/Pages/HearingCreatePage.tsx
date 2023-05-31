@@ -35,6 +35,7 @@ function HearingCreatePage() {
       PredmetId: courtCase.predmetId,
       AdvokatJmbg: courtCase.advokatJmbg,
     };
+    
     postHearing(dto)
       .then((res) => {
         navigate("/rociste/" + res.rocisteId);

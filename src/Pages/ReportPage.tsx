@@ -57,9 +57,9 @@ function ReportPage() {
             ""
           )}
           <h5 className="card-title">Opis: {report?.komentar}</h5>
-          <h5 className="card-title">Optuzeni jmbg: {report?.optuzeniJmbg}</h5>
+          <h5 className="card-title">Optuzeni jmbg: {report?.jmbgOptuzenog}</h5>
           <h5 className="card-title">
-            Prijavio (jmbg): {report?.prijavljenoOdJmbg}
+            Prijavio (jmbg): {report?.jmbgSluzbenika}
           </h5>
           <h5 className="card-title">
             Prekrsaj: {OpisiKrivica[report?.prekrsaj]}
