@@ -28,7 +28,6 @@ const CasePage = () => {
 
     getHearingsByCase(predmetId)
       .then((res) => {
-        console.log("hearings:", res);
         setHearings(res);
         const hasActiveHearing = res.some(
           (hearing) => hearing.ishodRocista === 0
@@ -73,12 +72,6 @@ const CasePage = () => {
             Pogledaj zakazano rociste
           </Link>
         ) : (
-          // <Button
-          //   onClick={() => console.log(getActiveHearingId())}
-          //   className="btn btn-outline-success"
-          // >
-          //   Pogledaj zakazano rociste
-          // </Button>
           <Link
             to={`/rociste/create/${courtCase?.predmetId}`}
             className="btn btn-outline-success"
@@ -109,9 +102,12 @@ const CasePage = () => {
                   <p className="card-text">
                     Ishod rocista: {IshodRocista[hearing?.ishodRocista]}
                   </p>
-                  <a href="#" className="btn btn-primary">
-                    Prikazi rociste
-                  </a>
+                  <Link
+                    to={`/rociste/${hearing.rocisteId}`}
+                    className="btn btn-outline-success"
+                  >
+                    Pogledaj rociste
+                  </Link>
                 </div>
               </div>
             );

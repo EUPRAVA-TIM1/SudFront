@@ -18,6 +18,21 @@ export function getHearingsByCase(caseId: string) {
     });
 }
 
+export function getHearingById(hearingId: string) {
+  return axios
+    .get(url + "/" + hearingId, {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem(courtStorageKey),
+      },
+    })
+    .then((res) => {
+      return res.data;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
 export function postHearing(dto) {
   return axios
     .post(url, dto, {

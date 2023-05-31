@@ -22,7 +22,7 @@ function HearingCreatePage() {
     getCaseById(caseId)
       .then((res) => {
         setCourtCase(res);
-        console.log(res);
+
         var date = new Date(res.datum);
         setCaseDate(date.toLocaleDateString());
       })

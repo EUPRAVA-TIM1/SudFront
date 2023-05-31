@@ -15,6 +15,8 @@ import CaseCreatePage from "./Pages/CaseCreatePage.tsx";
 import CasePage from "./Pages/CasePage.tsx";
 import CasesPage from "./Pages/CasesPage.tsx";
 import HearingCreatePage from "./Pages/HearingCreatePage.tsx";
+import HearingPage from "./Pages/HearingPage.tsx";
+import CourtDecisionCreatePage from "./Pages/CourtDecisionCreatePage.tsx";
 
 function App() {
   return (
@@ -73,6 +75,18 @@ function App() {
         <Route
           path="/rociste/create/:caseId"
           element={<NavLayout body={<HearingCreatePage></HearingCreatePage>} />}
+        ></Route>
+        <Route
+          path="/rociste/:hearingId"
+          element={<NavLayout body={<HearingPage></HearingPage>} />}
+        ></Route>
+        <Route
+          path="/odlukasudije/create/:hearingId"
+          element={
+            <NavLayout
+              body={<CourtDecisionCreatePage></CourtDecisionCreatePage>}
+            />
+          }
         ></Route>
       </Routes>
     </BrowserRouter>
