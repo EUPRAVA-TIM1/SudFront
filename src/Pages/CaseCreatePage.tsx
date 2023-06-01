@@ -118,7 +118,7 @@ function CaseCreatePage() {
         </div>
         <button
           type="submit"
-          className="btn btn-primary btn-lg"
+          className="btn btn-outline-success btn-lg"
           style={{ minWidth: "50%", marginLeft: "25%" }}
           onClick={handleSubmit(onSubmit)}
         >

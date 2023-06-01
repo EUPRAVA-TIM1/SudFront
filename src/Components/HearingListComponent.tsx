@@ -28,7 +28,7 @@ function HearingListComponent({ hearings }) {
               return (
                 <tr key={hearing.prekrsajnaPrijavaId}>
                   <td>{formattedDate}</td>
-                  <td>{hearing.jmbgOptuzenog}</td>
+                  <td>{hearing.predmet?.optuzeniJmbg}</td>
                   <td>{hearing.advokatJmbg}</td>
                   <td>
                     {hearing.predmet?.sudija?.ime}{" "}

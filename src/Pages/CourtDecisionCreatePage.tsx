@@ -4,7 +4,10 @@ import { useParams, useNavigate } from "react-router-dom";
 import { Rociste, OpisiKrivica } from "../Data/interfaces.ts";
 import { getHearingById } from "../Services/HearingService.ts";
 import { postDecision } from "../Services/CourtDecisionService.ts";
-import { updateTrafficUnitData } from "../Services/ExitService.ts";
+import {
+  updateTrafficUnitData,
+  updateMupData,
+} from "../Services/ExitService.ts";
 
 function CourtDecisionCreatePage() {
   const [hearing, setHearing] = useState<Rociste>();
@@ -39,17 +42,29 @@ function CourtDecisionCreatePage() {
       NovcanaKazna: Number(getValues("novcanaKazna")),
     };
 
+    const mupDto = {
+      oduzimanjeVozacke: false,
+      oduzimanjeBodova: 0,
+    };
+
     const trafficDto = {
       Status: null,
     };
+
     postDecision(dto)
       .then((res) => {
         trafficDto.Status = res.status;
-        console.log(trafficDto);
-        console.log(idForSend);
-
         updateTrafficUnitData(trafficDto, idForSend)
           .then(() => {
+            if (res.oduzimanjeBodova > 0 || res.oduzimanjeVozacke) {
+              mupDto.oduzimanjeBodova = res.oduzimanjeBodova;
+              mupDto.oduzimanjeVozacke = res.oduzimanjeVozacke;
+
+              updateMupData(mupDto, res.optuzeniJmbg).then(() => {
+                navigate("/rociste/" + res.rocisteId);
+              });
+            }
+
             navigate("/rociste/" + res.rocisteId);
           })
           .catch((err) => console.log(err));
@@ -210,7 +225,7 @@ function CourtDecisionCreatePage() {
 
         <button
           type="submit"
-          className="btn btn-primary btn-lg"
+          className="btn btn-outline-success btn-lg"
           style={{ minWidth: "50%", marginLeft: "25%" }}
           onClick={handleSubmit(onSubmit)}
         >

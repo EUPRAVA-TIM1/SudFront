@@ -82,7 +82,7 @@ export function getHearingsByUser() {
   return (
     axios
       // .get(url + "/gradjanin/" + localStorage.getItem(userJmbg), {
-      .get(url + "/gradjanin/32423234234234", {
+      .get(url + "/gradjanin/2012995175033", {
         headers: {
           Authorization: "Bearer " + localStorage.getItem(courtStorageKey),
         },

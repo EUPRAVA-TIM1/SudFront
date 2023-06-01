@@ -8,6 +8,7 @@ export const userJmbg = "jmbg";
 export const backend_url = "http://localhost:8003/api/";
 export const saobracajna_url =
   "http://localhost:8002/saobracajna/Policajac/Sud/Nalozi/Status/";
+export const mup_url = "http://127.0.0.1:3003/api/driving_licenses/";
 
 export const judgeComponents: Component[] = [
   {

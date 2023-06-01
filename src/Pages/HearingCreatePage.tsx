@@ -35,7 +35,7 @@ function HearingCreatePage() {
       PredmetId: courtCase.predmetId,
       AdvokatJmbg: courtCase.advokatJmbg,
     };
-    
+
     postHearing(dto)
       .then((res) => {
         navigate("/rociste/" + res.rocisteId);
@@ -99,7 +99,7 @@ function HearingCreatePage() {
 
         <button
           type="submit"
-          className="btn btn-primary btn-lg"
+          className="btn btn-outline-success btn-lg"
           style={{ minWidth: "50%", marginLeft: "25%" }}
           onClick={handleSubmit(onSubmit)}
         >

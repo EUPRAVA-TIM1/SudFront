@@ -33,7 +33,7 @@ function HearingPage() {
       sudId: hearing.sudId,
       PredmetId: hearing.predmet.predmetId,
       AdvokatJmbg: hearing.predmet.advokatJmbg,
-      ishodRocista: getValues("ishodRocista"),
+      ishodRocista: Number(getValues("ishodRocista")),
     };
 
     putHearing(dto)
@@ -132,11 +132,11 @@ function HearingPage() {
 
         <button
           type="submit"
-          className="btn btn-primary btn-lg"
+          className="btn btn-outline-success btn-lg"
           style={{ minWidth: "50%", marginLeft: "25%" }}
           onClick={handleSubmit(onSubmit)}
         >
-          Kreiraj
+          Sacuvaj
         </button>
       </form>
       <Button
