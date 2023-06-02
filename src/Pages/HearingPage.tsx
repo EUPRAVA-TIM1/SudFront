@@ -5,6 +5,7 @@ import { Button } from "react-bootstrap";
 import { userJmbg } from "../Data/data.ts";
 import { getHearingById, putHearing } from "../Services/HearingService.ts";
 import { useForm } from "react-hook-form";
+import { getDecisionByHearing } from "../Services/CourtDecisionService.ts";
 
 function HearingPage() {
   const { hearingId } = useParams();
@@ -12,6 +13,7 @@ function HearingPage() {
   const [hearing, setHearing] = useState<Rociste>();
   const [hearingDate, setHearingDate] = useState();
   const [isJudgeSigned, setIsJudgeSigned] = useState(false);
+  const [decisionExist, setDecisionExist] = useState(false);
   const {
     register,
     handleSubmit,
@@ -51,6 +53,10 @@ function HearingPage() {
         var date = new Date(res.datumRocista);
         setHearingDate(date.toLocaleDateString());
       })
+      .catch((err) => console.log(err));
+
+    getDecisionByHearing(hearingId)
+      .then((res) => setDecisionExist(res !== ""))
       .catch((err) => console.log(err));
   }, [hearingId]);
 
@@ -172,7 +178,7 @@ function HearingPage() {
           </div>
         </div>
         <div className="d-flex  col-4 ">
-          {isJudgeSigned ? (
+          {isJudgeSigned && !decisionExist ? (
             <>
               <Button
                 style={{ margin: "5px" }}

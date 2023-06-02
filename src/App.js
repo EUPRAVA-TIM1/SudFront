@@ -16,6 +16,11 @@ import HearingCreatePage from "./Pages/HearingCreatePage.tsx";
 import HearingPage from "./Pages/HearingPage.tsx";
 import CourtDecisionCreatePage from "./Pages/CourtDecisionCreatePage.tsx";
 import JudgeHearingsPage from "./Pages/JudgeHearingsPage.tsx";
+import CitizensHearingsPage from "./Pages/CitizensHearingsPage.tsx";
+import LawyersHearingsPage from "./Pages/LawyersHearingsPage.tsx";
+import JudgesDecisionsPage from "./Pages/JudgesDecisionsPage.tsx";
+import LawyersDecisionsPage from "./Pages/LawyersDecisionsPage.tsx";
+import CitizensDecisionsPage from "./Pages/CitizensDecisionsPage.tsx";
 
 function App() {
   return (
@@ -80,6 +85,18 @@ function App() {
           element={<NavLayout body={<JudgeHearingsPage></JudgeHearingsPage>} />}
         ></Route>
         <Route
+          path="/rocista/gradjanin"
+          element={
+            <NavLayout body={<CitizensHearingsPage></CitizensHearingsPage>} />
+          }
+        ></Route>
+        <Route
+          path="/rocista/advokat"
+          element={
+            <NavLayout body={<LawyersHearingsPage></LawyersHearingsPage>} />
+          }
+        ></Route>
+        <Route
           path="/rociste/:hearingId"
           element={<NavLayout body={<HearingPage></HearingPage>} />}
         ></Route>
@@ -89,6 +106,24 @@ function App() {
             <NavLayout
               body={<CourtDecisionCreatePage></CourtDecisionCreatePage>}
             />
+          }
+        ></Route>
+        <Route
+          path="/odlukasudije/sudija"
+          element={
+            <NavLayout body={<JudgesDecisionsPage></JudgesDecisionsPage>} />
+          }
+        ></Route>
+        <Route
+          path="/odlukasudije/advokat"
+          element={
+            <NavLayout body={<LawyersDecisionsPage></LawyersDecisionsPage>} />
+          }
+        ></Route>
+        <Route
+          path="/odlukasudije/gradjanin"
+          element={
+            <NavLayout body={<CitizensDecisionsPage></CitizensDecisionsPage>} />
           }
         ></Route>
       </Routes>

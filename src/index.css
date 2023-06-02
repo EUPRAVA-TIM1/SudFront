@@ -11,3 +11,31 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.circle-container {
+  display: flex;  
+  justify-content: center;
+}
+
+.circle {
+  width: 200%;
+  height: 15vh;
+  border-radius: 50%;
+  background-color: RGBA(25,135,84,var(--bs-bg-opacity,1));
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  font-size: 20px;
+}
+
+.circle-container-item{
+  display: inline-block;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+.circle-text {
+  text-align: center;
+  display: inline-block;
+}

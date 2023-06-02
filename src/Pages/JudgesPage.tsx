@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Form, Table } from "react-bootstrap";
+import { Form, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { getAllJudges } from "../Services/JudgeService.ts";
 import { Sudija, Sud } from "../Data/interfaces.ts";
@@ -45,7 +45,6 @@ function JudgesPage() {
         filteredJudges.filter((judge) => judge.prezime.includes(judgeLastName))
       );
     } else if (judgeName === "" && judgeLastName !== "") {
-      console.log("izmena");
       setFilteredJudges(
         judges.filter((judge) => judge.prezime.includes(judgeLastName))
       );
@@ -53,7 +52,6 @@ function JudgesPage() {
 
     if (courtId !== "") {
       if (judgeName !== "" || judgeLastName !== "") {
-        console.log("calles");
         setFilteredJudges(
           filteredJudges.filter((judge) => judge.sudId.match(courtId))
         );
@@ -66,10 +64,6 @@ function JudgesPage() {
   const handleJudgesChange = (e) => {
     setCourtId(e.target.value);
   };
-
-  function showJudge(jmbg: string) {
-    console.log(jmbg);
-  }
 
   return (
     <>

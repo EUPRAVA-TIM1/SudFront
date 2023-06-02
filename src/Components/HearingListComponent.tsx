@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { Rociste, IshodRocista } from "../Data/interfaces.ts";
+import React from "react";
+import { IshodRocista } from "../Data/interfaces.ts";
 import { Link } from "react-router-dom";
 import { Table } from "react-bootstrap";
 
 function HearingListComponent({ hearings }) {
-  const [judges, setJudges] = useState(new Map());
   return (
     <>
       <Table striped>

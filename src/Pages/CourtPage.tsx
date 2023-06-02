@@ -1,7 +1,7 @@
-import { React, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Sud, Sudija } from "../Data/interfaces";
 import { useParams, Link } from "react-router-dom";
-import { Form, Table, Button } from "react-bootstrap";
+import { Form, Table } from "react-bootstrap";
 import { getAllJudgesByCourt, getCourtById } from "../Services/CourtService.ts";
 
 function CourtPage() {
@@ -30,10 +30,10 @@ function CourtPage() {
 
   useEffect(() => {
     var retVal = judges;
-    if (judgeName != "") {
+    if (judgeName !== "") {
       retVal = retVal.filter((c) => c.ime.includes(judgeName));
     }
-    if (judgeLastName != "") {
+    if (judgeLastName !== "") {
       retVal = retVal.filter((c) => c.prezime.includes(judgeLastName));
     }
     setFilteredJudges(retVal);

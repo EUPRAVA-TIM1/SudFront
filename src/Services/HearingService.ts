@@ -71,7 +71,7 @@ export function getHearingsByJudge() {
       },
     })
     .then((res) => {
-      return res.data;
+      return res.data.$values;
     })
     .catch((err) => {
       console.log(err);
@@ -79,32 +79,29 @@ export function getHearingsByJudge() {
 }
 
 export function getHearingsByUser() {
-  return (
-    axios
-      // .get(url + "/gradjanin/" + localStorage.getItem(userJmbg), {
-      .get(url + "/gradjanin/2012995175033", {
-        headers: {
-          Authorization: "Bearer " + localStorage.getItem(courtStorageKey),
-        },
-      })
-      .then((res) => {
-        return res.data.$values;
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-  );
-}
-
-export function getHearingsByLawyer() {
   return axios
-    .get(url + "/sudija/" + localStorage.getItem(userJmbg), {
+    .get(url + "/gradjanin/" + localStorage.getItem(userJmbg), {
       headers: {
         Authorization: "Bearer " + localStorage.getItem(courtStorageKey),
       },
     })
     .then((res) => {
-      return res.data;
+      return res.data.$values;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+export function getHearingsByLawyer() {
+  return axios
+    .get(url + "/advokat/" + localStorage.getItem(userJmbg), {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem(courtStorageKey),
+      },
+    })
+    .then((res) => {
+      return res.data.$values;
     })
     .catch((err) => {
       console.log(err);

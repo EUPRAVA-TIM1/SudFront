@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import HearingListComponent from "../Components/HearingListComponent.tsx";
 import { Rociste } from "../Data/interfaces.ts";
-import { getHearingsByJudge } from "../Services/HearingService.ts";
+import { getHearingsByUser } from "../Services/HearingService.ts";
 
-function JudgeHearingsPage() {
+const CitizensHearingsPage = () => {
   const [hearings, setHearings] = useState<Rociste>([]);
   useEffect(() => {
-    getHearingsByJudge()
+    getHearingsByUser()
       .then((res) => {
         setHearings(res);
       })
@@ -14,10 +14,10 @@ function JudgeHearingsPage() {
   }, []);
   return (
     <>
-      <h3>Pretraga sudskih rocista</h3>
+      <h3>Pretraga rocista</h3>
       <HearingListComponent hearings={hearings}></HearingListComponent>
     </>
   );
-}
+};
 
-export default JudgeHearingsPage;
+export default CitizensHearingsPage;

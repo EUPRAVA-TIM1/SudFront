@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Table, Button, Form } from "react-bootstrap";
+import { Table, Form } from "react-bootstrap";
 import { Opstina, Sud } from "../Data/interfaces.ts";
 import { getAllCourts } from "../Services/CourtService.ts";
 import { getAllMunicipalities } from "../Services/MunicipalityService.ts";
@@ -23,10 +23,6 @@ function CourtsPage() {
       })
       .catch((err) => console.log(err));
   }, []);
-
-  function showCourt(courtId: string) {
-    console.log(courtId);
-  }
 
   useEffect(() => {
     filterCourtsByOpstinaName();

@@ -14,7 +14,7 @@ export const judgeComponents: Component[] = [
   {
     title: "Pregled sudskih odluka - sudija",
     desc: "Pregled sudskih odluka za zaposlene sudije",
-    url: "/sudija/",
+    url: "/odlukasudije/sudija",
   },
   {
     title: "Pregled rocista - sudija",
@@ -47,21 +47,21 @@ export const allComponents: Component[] = [
   {
     title: "Pregled sudskih odluka - fizicka lica",
     desc: "Pregled sudskih odluka za fizicka lica",
-    url: "/optuzeni/",
+    url: "/odlukasudije/gradjanin",
   },
   {
     title: "Pregled sudskih odluka - pravna lica",
     desc: "Pregled sudskih odluka za pravna lica",
-    url: "/advokat/",
+    url: "/odlukasudije/advokat",
   },
   {
     title: "Pregled rocista - fizicka lica",
     desc: "Pregled svih rocista za fizicka lica",
-    url: "/rociste/gradjanin/",
+    url: "/rocista/gradjanin",
   },
   {
     title: "Pregled rocista - pravna lica",
     desc: "Pregled svih rocista za pravna lica",
-    url: "/rociste/advokat/",
+    url: "/rocista/advokat",
   },
 ];

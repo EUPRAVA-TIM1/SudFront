@@ -35,7 +35,7 @@ function CasesPage() {
                 <tr key={courtCase.prekrsajnaPrijavaId}>
                   <td>{formattedDate}</td>
                   <td>{courtCase.naslov}</td>
-                  <td>{courtCase.jmbgOptuzenog}</td>
+                  <td>{courtCase.optuzeniJmbg}</td>
                   <td>{StatusPredmeta[courtCase.status]}</td>
                   <td>
                     <Link
